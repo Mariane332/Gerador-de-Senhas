@@ -3,9 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>senhers</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Gerador de senhas</title>
 </head>
 <body>
-    
+
+    <div class="container">
+    <div class="header">
+     <h1>Gerador de senhas</h1>
+    </div>
+
+    <div class="display-box">
+        <span id="password">Senha</span>
+        <button class="copy-btn" id="copyBtn" title="Copiar">Copiar</button>
+    </div>
+
+    <div class="custom-section">
+     <h2> Personalize sua senha</h2>
+
+     <div class="control-group">
+        <span class="control-label">Número de carcteres</span>
+
+    <div class="counter">
+        <button id="decrement">-</button>
+        <span id="LengthVal">12</span>
+        <button id="Increment">+</button>
+    </div>
+     </div>
+     <button class="generate-bnt" id="generateBtn"> Gerar nova senha</button>
+    </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
