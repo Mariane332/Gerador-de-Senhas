@@ -179,3 +179,75 @@ body {
         width: 100%;
     }
 }
+/* Layout das duas colunas */
+.main-content {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.custom-section, .security-section {
+    flex: 1;
+    background: linear-gradient(to bottom, #c90000, #5a0000);
+    border: 2px solid #800000;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: left;
+}
+
+/* Estilo dos Checkboxes */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Indicador de Segurança */
+.meter-bar {
+    width: 100%;
+    height: 16px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    position: relative;
+    margin: 15px 0 5px 0;
+}
+
+.indicator {
+    position: absolute;
+    left: 10%; /* Ajustado dinamicamente no JS */
+    top: -5px;
+    font-size: 18px;
+}
+
+.meter-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+.security-message {
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Botão Gerar no centro */
+.action-box {
+    text-align: center;
+}
+
+/* Responsividade: no celular fica um embaixo do outro */
+@media (max-width: 650px) {
+    .main-content {
+        flex-direction: column;
+    }
+}

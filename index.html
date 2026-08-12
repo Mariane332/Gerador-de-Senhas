@@ -1,38 +1,94 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Gerador de senhas</title>
+    <title>Gerador de Senhas</title>
 </head>
 <body>
 
     <div class="container">
-    <div class="header">
-     <h1>Gerador de senhas</h1>
+        <div class="header">
+            <span class="icon">🔒</span>
+            <h1>Gerador de Senhas</h1>
+            <p class="subtitle">Gere e depois avalie se sua senha é segura para proteger seus dados</p>
+        </div>
+
+        <div class="display-box">
+            <span class="label">Senha</span>
+            <span id="password">AlecrimDourado1946@</span>
+            <button class="copy-btn" id="copyBtn" title="Copiar">Copiar</button>
+        </div>
+
+        <div class="main-content">
+            
+            <div class="custom-section">
+                <h2>Personalize sua senha:</h2>
+
+                <div class="options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked id="chkUppercase">
+                        <span class="checkmark"></span>
+                        Letras maiúsculas
+                    </label>
+
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked id="chkLowercase">
+                        <span class="checkmark"></span>
+                        Letras minúsculas
+                    </label>
+
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked id="chkSymbols">
+                        <span class="checkmark"></span>
+                        Símbolos
+                    </label>
+
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked id="chkNumbers">
+                        <span class="checkmark"></span>
+                        Números
+                    </label>
+                </div>
+
+                <div class="control-group">
+                    <span class="control-label">Caracteres</span>
+                    <div class="counter">
+                        <button id="Increment">+</button>
+                        <span id="LengthVal">12</span>
+                        <button id="decrement">-</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="security-section">
+                <h2>Nível de segurança</h2>
+
+                <div class="meter-container">
+                    <div class="meter-bar">
+                        <div class="indicator" id="strengthIndicator">😃</div>
+                    </div>
+                    <div class="meter-labels">
+                        <span>Forte</span>
+                        <span>Média</span>
+                        <span>Fraca</span>
+                    </div>
+                </div>
+
+                <p class="security-message" id="securityMessage">
+                    Parabéns! sua senha é muito segura.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="action-box">
+            <button class="generate-bnt" id="generateBtn">Gerar nova senha</button>
+        </div>
     </div>
 
-    <div class="display-box">
-        <span id="password">Senha</span>
-        <button class="copy-btn" id="copyBtn" title="Copiar">Copiar</button>
-    </div>
-
-    <div class="custom-section">
-     <h2> Personalize sua senha</h2>
-
-     <div class="control-group">
-        <span class="control-label">Número de caracteres</span>
-
-    <div class="counter">
-        <button id="decrement">-</button>
-        <span id="LengthVal">12</span>
-        <button id="decrement">+</button>
-    </div>
-     </div>
-     <button class="generate-bnt" id="generateBtn"> Gerar nova senha</button>
-    </div>
-    </div>
     <script src="script.js"></script>
 </body>
 </html>
