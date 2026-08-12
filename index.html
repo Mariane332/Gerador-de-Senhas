@@ -1,94 +1,428 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Gerador de Senhas</title>
 </head>
+
 <body>
 
-    <div class="container">
-        <div class="header">
-            <span class="icon">🔒</span>
-            <h1>Gerador de Senhas</h1>
-            <p class="subtitle">Gere e depois avalie se sua senha é segura para proteger seus dados</p>
+    <header class="topbar">
+        <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
-        <div class="display-box">
-            <span class="label">Senha</span>
-            <span id="password">AlecrimDourado1946@</span>
-            <button class="copy-btn" id="copyBtn" title="Copiar">Copiar</button>
-        </div>
+        <div class="topbar-title">gerador de senhas</div>
+    </header>
 
-        <div class="main-content">
-            
-            <div class="custom-section">
-                <h2>Personalize sua senha:</h2>
+    <main class="page">
 
-                <div class="options">
-                    <label class="checkbox-container">
-                        <input type="checkbox" checked id="chkUppercase">
-                        <span class="checkmark"></span>
-                        Letras maiúsculas
-                    </label>
+        <section class="generator">
 
-                    <label class="checkbox-container">
-                        <input type="checkbox" checked id="chkLowercase">
-                        <span class="checkmark"></span>
-                        Letras minúsculas
-                    </label>
-
-                    <label class="checkbox-container">
-                        <input type="checkbox" checked id="chkSymbols">
-                        <span class="checkmark"></span>
-                        Símbolos
-                    </label>
-
-                    <label class="checkbox-container">
-                        <input type="checkbox" checked id="chkNumbers">
-                        <span class="checkmark"></span>
-                        Números
-                    </label>
-                </div>
-
-                <div class="control-group">
-                    <span class="control-label">Caracteres</span>
-                    <div class="counter">
-                        <button id="Increment">+</button>
-                        <span id="LengthVal">12</span>
-                        <button id="decrement">-</button>
-                    </div>
-                </div>
+            <div class="generator-header">
+                <div class="lock-icon">♧</div>
+                <h1>Gerador de Senhas</h1>
             </div>
 
-            <div class="security-section">
-                <h2>Nível de segurança</h2>
+            <p class="subtitle">
+                Gere e depois avalie se sua senha é segura para proteger seus dados
+            </p>
 
-                <div class="meter-container">
-                    <div class="meter-bar">
-                        <div class="indicator" id="strengthIndicator">😃</div>
+            <div class="password-display">
+                <span class="password-label">Senha</span>
+                <span id="password">Gerando...</span>
+            </div>
+
+            <div class="content-grid">
+
+                <section class="customize">
+
+                    <h2>Personalize sua senha:</h2>
+
+                    <label class="option">
+                        <input type="checkbox" id="uppercase" checked>
+                        <span>Letras maiúsculas</span>
+                    </label>
+
+                    <label class="option">
+                        <input type="checkbox" id="lowercase" checked>
+                        <span>Letras minúsculas</span>
+                    </label>
+
+                    <label class="option">
+                        <input type="checkbox" id="symbols" checked>
+                        <span>Símbolos</span>
+                    </label>
+
+                    <label class="option">
+                        <input type="checkbox" id="numbers" checked>
+                        <span>Números</span>
+                    </label>
+
+                    <div class="length-control">
+                        <span class="length-label">Caracteres</span>
+
+                        <button type="button" id="increase">+</button>
+
+                        <span id="length">12</span>
+
+                        <button type="button" id="decrease">−</button>
                     </div>
-                    <div class="meter-labels">
+
+                </section>
+
+
+                <section class="security">
+
+                    <h2>Nível de segurança</h2>
+
+                    <div class="security-bar">
+                        <div id="security-fill"></div>
+                        <div id="security-face" class="security-face">
+                            ●
+                        </div>
+                    </div>
+
+                    <div class="security-labels">
                         <span>Forte</span>
                         <span>Média</span>
                         <span>Fraca</span>
                     </div>
-                </div>
 
-                <p class="security-message" id="securityMessage">
-                    Parabéns! sua senha é muito segura.
-                </p>
+                    <p id="security-message">
+                        Parabéns! sua senha é muito segura.
+                    </p>
+
+                </section>
+
             </div>
 
-        </div>
+        </section>
 
-        <div class="action-box">
-            <button class="generate-bnt" id="generateBtn">Gerar nova senha</button>
-        </div>
-    </div>
+    </main>
 
-    <script src="script.js"></script>
+
+    <script>
+
+        const passwordElement =
+            document.getElementById("password");
+
+        const lengthElement =
+            document.getElementById("length");
+
+        const increaseButton =
+            document.getElementById("increase");
+
+        const decreaseButton =
+            document.getElementById("decrease");
+
+
+        const uppercase =
+            document.getElementById("uppercase");
+
+        const lowercase =
+            document.getElementById("lowercase");
+
+        const symbols =
+            document.getElementById("symbols");
+
+        const numbers =
+            document.getElementById("numbers");
+
+
+        const securityFill =
+            document.getElementById("security-fill");
+
+        const securityFace =
+            document.getElementById("security-face");
+
+        const securityMessage =
+            document.getElementById("security-message");
+
+
+        let passwordLength = 12;
+
+
+        const characterSets = {
+
+            uppercase:
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+
+            lowercase:
+                "abcdefghijklmnopqrstuvwxyz",
+
+            numbers:
+                "0123456789",
+
+            symbols:
+                "!@#$%&*+-_=.?<>"
+
+        };
+
+
+        function getSelectedSets() {
+
+            const sets = [];
+
+            if (uppercase.checked) {
+                sets.push(characterSets.uppercase);
+            }
+
+            if (lowercase.checked) {
+                sets.push(characterSets.lowercase);
+            }
+
+            if (numbers.checked) {
+                sets.push(characterSets.numbers);
+            }
+
+            if (symbols.checked) {
+                sets.push(characterSets.symbols);
+            }
+
+            return sets;
+        }
+
+
+        function randomCharacter(text) {
+
+            const randomArray = new Uint32Array(1);
+
+            crypto.getRandomValues(randomArray);
+
+            return text[randomArray[0] % text.length];
+        }
+
+
+        function generatePassword() {
+
+            const selectedSets = getSelectedSets();
+
+
+            if (selectedSets.length === 0) {
+
+                passwordElement.textContent =
+                    "Selecione uma opção";
+
+                updateSecurity(0, 0);
+
+                return;
+            }
+
+
+            const allCharacters =
+                selectedSets.join("");
+
+
+            let password = "";
+
+
+            // Garante pelo menos um caractere
+            // de cada categoria escolhida.
+
+            selectedSets.forEach(set => {
+
+                password += randomCharacter(set);
+
+            });
+
+
+            while (password.length < passwordLength) {
+
+                password +=
+                    randomCharacter(allCharacters);
+
+            }
+
+
+            // Embaralha a senha.
+
+            const chars = password.split("");
+
+
+            for (let i = chars.length - 1; i > 0; i--) {
+
+                const randomArray =
+                    new Uint32Array(1);
+
+                crypto.getRandomValues(randomArray);
+
+                const j =
+                    randomArray[0] % (i + 1);
+
+                [chars[i], chars[j]] =
+                    [chars[j], chars[i]];
+
+            }
+
+
+            passwordElement.textContent =
+                chars.join("");
+
+
+            updateSecurity(
+                selectedSets.length,
+                allCharacters.length
+            );
+
+        }
+
+
+        function updateSecurity(categories, poolSize) {
+
+            if (categories === 0) {
+
+                securityFill.style.width = "0%";
+
+                securityFill.className = "weak";
+
+                securityFace.textContent = "!";
+
+                securityFace.className =
+                    "security-face weak-face";
+
+                securityMessage.textContent =
+                    "Escolha pelo menos uma opção.";
+
+                return;
+            }
+
+
+            const entropy =
+                passwordLength * Math.log2(poolSize);
+
+
+            let level;
+            let percentage;
+            let message;
+
+
+            if (entropy >= 75) {
+
+                level = "strong";
+
+                percentage = 100;
+
+                message =
+                    "Parabéns! sua senha é muito segura.";
+
+            }
+
+            else if (entropy >= 50) {
+
+                level = "medium";
+
+                percentage = 65;
+
+                message =
+                    "Sua senha tem uma segurança razoável.";
+
+            }
+
+            else {
+
+                level = "weak";
+
+                percentage = 30;
+
+                message =
+                    "Aumente o tamanho ou use mais tipos de caracteres.";
+
+            }
+
+
+            securityFill.style.width =
+                percentage + "%";
+
+            securityFill.className =
+                level;
+
+
+            if (level === "strong") {
+
+                securityFace.className =
+                    "security-face strong-face";
+
+            }
+
+            else if (level === "medium") {
+
+                securityFace.className =
+                    "security-face medium-face";
+
+            }
+
+            else {
+
+                securityFace.className =
+                    "security-face weak-face";
+
+            }
+
+
+            securityMessage.textContent =
+                message;
+
+        }
+
+
+        function updateLength(newLength) {
+
+            passwordLength =
+                Math.max(
+                    4,
+                    Math.min(32, newLength)
+                );
+
+            lengthElement.textContent =
+                passwordLength;
+
+            generatePassword();
+
+        }
+
+
+        increaseButton.addEventListener(
+            "click",
+            () => {
+                updateLength(passwordLength + 1);
+            }
+        );
+
+
+        decreaseButton.addEventListener(
+            "click",
+            () => {
+                updateLength(passwordLength - 1);
+            }
+        );
+
+
+        [
+            uppercase,
+            lowercase,
+            symbols,
+            numbers
+        ].forEach(option => {
+
+            option.addEventListener(
+                "change",
+                generatePassword
+            );
+
+        });
+
+
+        // Gera a senha automaticamente
+        // quando a página é aberta.
+
+        generatePassword();
+
+    </script>
+
 </body>
 </html>
